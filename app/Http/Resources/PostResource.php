@@ -13,6 +13,7 @@ class PostResource extends JsonResource
      * Transform the resource into an array.
      *
      * Converts database snake_case keys to camelCase for the JSON response.
+     * Timestamps are formatted as ISO 8601 strings for consistency.
      *
      * @param  Request  $request  The incoming HTTP request.
      * @return array<string, mixed>
@@ -25,8 +26,8 @@ class PostResource extends JsonResource
             'content' => $this->content,
             'category' => $this->category,
             'tags' => $this->tags,
-            'createdAt' => $this->created_at,
-            'updatedAt' => $this->updated_at,
+            'createdAt' => $this->created_at?->toIso8601String(),
+            'updatedAt' => $this->updated_at?->toIso8601String(),
         ];
     }
 }
