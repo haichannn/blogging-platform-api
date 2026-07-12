@@ -60,18 +60,10 @@ class PostController extends Controller
     /**
      * Get a single blog post by ID.
      *
-     * @param  int  $id  The post ID.
+     * @param  Post  $post  The post model to list by id.
      */
-    public function show(int $id): PostResource|JsonResponse
+    public function show(Post $post): PostResource|JsonResponse
     {
-        $post = Post::find($id);
-
-        if (! $post) {
-            return response()->json([
-                'errors' => ['message' => 'Post not found.'],
-            ], 404);
-        }
-
         return PostResource::make($post);
     }
 
@@ -81,18 +73,10 @@ class PostController extends Controller
      * Supports partial updates via PATCH. Validation is handled by UpdatePostRequest.
      *
      * @param  UpdatePostRequest  $request  The validated incoming request.
-     * @param  int  $id  The post ID.
+     * @param  Post  $post  The post model to update.
      */
-    public function update(UpdatePostRequest $request, int $id): PostResource|JsonResponse
+    public function update(UpdatePostRequest $request, Post $post): PostResource|JsonResponse
     {
-        $post = Post::find($id);
-
-        if (! $post) {
-            return response()->json([
-                'errors' => ['message' => 'Post not found.'],
-            ], 404);
-        }
-
         $post->update($request->validated());
 
         return PostResource::make($post);
@@ -101,18 +85,10 @@ class PostController extends Controller
     /**
      * Delete a blog post by ID.
      *
-     * @param  int  $id  The post ID.
+     * @param  Post  $post  The post model to delete.
      */
-    public function destroy(int $id): JsonResponse
+    public function destroy(Post $post): JsonResponse
     {
-        $post = Post::find($id);
-
-        if (! $post) {
-            return response()->json([
-                'errors' => ['message' => 'Post not found.'],
-            ], 404);
-        }
-
         $post->delete();
 
         return response()->json(null, 204);
