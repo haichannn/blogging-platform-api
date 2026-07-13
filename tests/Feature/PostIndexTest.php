@@ -20,23 +20,23 @@ class PostIndexTest extends TestCase
 
         $response
             ->assertStatus(200)
-            ->assertJsonCount(0) // Memastikan array JSON yang dikembalikan kosong
-            ->assertExactJson([]); // Memastikan responsnya adalah array kosong []
+            ->assertJsonCount(0) // Assert that the returned JSON array is empty.
+            ->assertExactJson([]); // Assert that the response is an empty array [].
     }
 
     #[Test]
     #[TestDox('It should return a list of all posts')]
     public function it_returns_a_list_of_all_posts(): void
     {
-        // Membuat 3 postingan untuk pengujian
+        // Create 3 posts for testing.
         Post::factory()->count(3)->create();
 
         $response = $this->getJson('/api/posts');
 
         $response
             ->assertStatus(200)
-            ->assertJsonCount(3) // Memastikan ada 3 item dalam array JSON
-            ->assertJsonStructure([ // Memeriksa struktur dari setiap item dalam array
+            ->assertJsonCount(3) // Assert there are 3 items in the JSON array.
+            ->assertJsonStructure([ // Check the structure of each item in the array.
                 '*' => [
                     'id',
                     'title',

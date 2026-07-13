@@ -16,16 +16,16 @@ class PostShowTest extends TestCase
     #[TestDox('It should return a single post successfully when the post exists')]
     public function it_returns_single_post_successfully_when_post_exists(): void
     {
-        // 1. Buat sebuah post untuk diambil datanya
+        // 1. Create a post to be retrieved.
         $post = Post::factory()->create();
 
-        // 2. Panggil endpoint untuk mengambil post tersebut
+        // 2. Call the endpoint to retrieve that post.
         $response = $this->getJson('/api/posts/' . $post->id);
 
-        // 3. Pastikan responsnya benar
+        // 3. Assert the response is correct.
         $response
             ->assertStatus(200)
-            ->assertJsonStructure([ // Periksa struktur JSON sesuai PRD.md
+            ->assertJsonStructure([ // Check the JSON structure matches the PRD.
                 'id',
                 'title',
                 'content',
@@ -34,7 +34,7 @@ class PostShowTest extends TestCase
                 'createdAt',
                 'updatedAt',
             ])
-            ->assertJson([ // Pastikan data yang dikembalikan sesuai dengan yang dibuat
+            ->assertJson([ // Assert the returned data matches the created post.
                 'id' => $post->id,
                 'title' => $post->title,
             ]);
@@ -46,10 +46,10 @@ class PostShowTest extends TestCase
     {
         $nonExistentId = 999;
 
-        // Panggil endpoint dengan ID yang tidak ada di database
+        // Call the endpoint with an ID that doesn't exist in the database.
         $response = $this->getJson('/api/posts/' . $nonExistentId);
 
-        // Pastikan responsnya adalah 404 dengan format error yang benar
+        // Assert the response is 404 with the correct error format.
         $response
             ->assertStatus(404)
             ->assertExactJson([
@@ -63,13 +63,13 @@ class PostShowTest extends TestCase
     #[TestDox('It should also return a 404 Not Found for non-numeric IDs')]
     public function it_returns_404_not_found_for_non_numeric_ids(): void
     {
-        $invalidId = 'abc'; // ID dengan format yang salah (bukan angka)
+        $invalidId = 'abc'; // An ID with an invalid format (non-numeric).
 
-        // Panggil endpoint dengan ID non-numerik
+        // Call the endpoint with a non-numeric ID.
         $response = $this->getJson('/api/posts/' . $invalidId);
 
-        // Pastikan method missing() di routing bekerja dan mengembalikan 404
-        // dengan format error yang sama seperti ID yang tidak ditemukan.
+        // Assert that the routing's missing() method works and returns a 404
+        // with the same error format as a non-existent ID.
         $response
             ->assertStatus(404)
             ->assertExactJson([
