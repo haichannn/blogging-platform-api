@@ -67,7 +67,7 @@ class PostUpdateTest extends TestCase
 
     #[Test]
     #[TestDox('It should return a 404 Not Found error if the post to be updated does not exist')]
-    public function it_returns_404_if_post_to_update_does_not_exist(): void
+    public function it_returns404_if_post_to_update_does_not_exist(): void
     {
         $nonExistentId = 999;
         $updateData = ['title' => 'A title']; // A valid payload is needed.
@@ -78,8 +78,8 @@ class PostUpdateTest extends TestCase
             ->assertStatus(404)
             ->assertExactJson([
                 'errors' => [
-                    'message' => 'Post not found.'
-                ]
+                    'message' => 'Post not found.',
+                ],
             ]);
     }
 

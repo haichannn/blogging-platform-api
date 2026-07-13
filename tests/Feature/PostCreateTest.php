@@ -63,7 +63,7 @@ class PostCreateTest extends TestCase
             ->assertStatus(201)
             ->assertJson([
                 'title' => 'Post with Null Tags',
-                'tags' => null
+                'tags' => null,
             ]);
 
         $this->assertDatabaseHas('posts', ['title' => 'Post with Null Tags']);

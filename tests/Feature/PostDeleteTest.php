@@ -35,7 +35,7 @@ class PostDeleteTest extends TestCase
 
     #[Test]
     #[TestDox('It should return a 404 Not Found error if the post to be deleted does not exist')]
-    public function it_returns_404_if_post_to_be_deleted_does_not_exist(): void
+    public function it_returns404_if_post_to_be_deleted_does_not_exist(): void
     {
         $nonExistentId = 999;
 
@@ -47,14 +47,14 @@ class PostDeleteTest extends TestCase
             ->assertStatus(404)
             ->assertExactJson([
                 'errors' => [
-                    'message' => 'Post not found.'
-                ]
+                    'message' => 'Post not found.',
+                ],
             ]);
     }
 
     #[Test]
     #[TestDox('It should also return a 404 Not Found for non-numeric IDs when attempting to delete')]
-    public function it_returns_404_for_non_numeric_ids_on_delete_attempt(): void
+    public function it_returns404_for_non_numeric_ids_on_delete_attempt(): void
     {
         $invalidId = 'abc';
 
@@ -66,8 +66,8 @@ class PostDeleteTest extends TestCase
             ->assertStatus(404)
             ->assertExactJson([
                 'errors' => [
-                    'message' => 'Post not found.'
-                ]
+                    'message' => 'Post not found.',
+                ],
             ]);
     }
 }
