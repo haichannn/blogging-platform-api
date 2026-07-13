@@ -42,7 +42,7 @@ class PostShowTest extends TestCase
 
     #[Test]
     #[TestDox('It should return a 404 Not Found error if the post does not exist')]
-    public function it_returns_404_not_found_if_post_does_not_exist(): void
+    public function it_returns404_not_found_if_post_does_not_exist(): void
     {
         $nonExistentId = 999;
 
@@ -54,14 +54,14 @@ class PostShowTest extends TestCase
             ->assertStatus(404)
             ->assertExactJson([
                 'errors' => [
-                    'message' => 'Post not found.'
-                ]
+                    'message' => 'Post not found.',
+                ],
             ]);
     }
 
     #[Test]
     #[TestDox('It should also return a 404 Not Found for non-numeric IDs')]
-    public function it_returns_404_not_found_for_non_numeric_ids(): void
+    public function it_returns404_not_found_for_non_numeric_ids(): void
     {
         $invalidId = 'abc'; // An ID with an invalid format (non-numeric).
 
@@ -74,8 +74,8 @@ class PostShowTest extends TestCase
             ->assertStatus(404)
             ->assertExactJson([
                 'errors' => [
-                    'message' => 'Post not found.'
-                ]
+                    'message' => 'Post not found.',
+                ],
             ]);
     }
 }

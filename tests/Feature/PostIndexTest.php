@@ -45,7 +45,7 @@ class PostIndexTest extends TestCase
                     'tags',
                     'createdAt',
                     'updatedAt',
-                ]
+                ],
             ]);
     }
 }
