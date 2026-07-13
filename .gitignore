@@ -29,3 +29,4 @@ Thumbs.db
 codex.session.txt
 prd-create.txt
 /.agents
+.php-cs-fixer.cache
