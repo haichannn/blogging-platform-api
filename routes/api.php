@@ -8,8 +8,6 @@ Route::apiResource('posts', PostController::class)
     // Handle missing resources with a 404 JSON response
     ->missing(function () {
         return response()->json([
-            'errors' => [
-                'message' => 'Post not found.',
-            ],
+            'message' => 'Post not found.',
         ], 404);
     });
