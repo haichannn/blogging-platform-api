@@ -8,6 +8,8 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
+use Dedoc\Scramble\Attributes\Endpoint;
+use Dedoc\Scramble\Attributes\QueryParameter;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -18,10 +20,10 @@ class PostController extends Controller
      * Get all blog posts, with optional search filtering.
      *
      * Searches by title and category when the 'search' query parameter is provided.
-     * Uses Eloquent where() with LIKE for safe search (no raw queries).
      *
      * @param  Request  $request  The incoming HTTP request.
      */
+    #[QueryParameter(name: 'search', description: 'Search term for filtering posts by title or category', required: false)]
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = Post::query();
@@ -60,7 +62,7 @@ class PostController extends Controller
     /**
      * Get a single blog post by ID.
      *
-     * @param  Post  $post  The post model to list by id.
+     * @param  Post  $post The ID of the post to retrieve
      */
     public function show(Post $post): PostResource|JsonResponse
     {
@@ -75,6 +77,7 @@ class PostController extends Controller
      * @param  UpdatePostRequest  $request  The validated incoming request.
      * @param  Post  $post  The post model to update.
      */
+    #[Endpoint(method: 'PATCH')]
     public function update(UpdatePostRequest $request, Post $post): PostResource|JsonResponse
     {
         $post->update($request->validated());

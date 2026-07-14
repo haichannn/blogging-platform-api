@@ -132,9 +132,7 @@ Schema::create('posts', function (Blueprint $table) {
 **Response Gagal (Tidak Ditemukan)** — `404 Not Found`:
 ```json
 {
-  "errors": {
-    "message": "Post not found."
-  }
+  "message": "Post not found."
 }
 ```
 
@@ -160,9 +158,7 @@ Tidak mengembalikan body apapun.
 **Response Gagal (Tidak Ditemukan)** — `404 Not Found`:
 ```json
 {
-  "errors": {
-    "message": "Post not found."
-  }
+  "message": "Post not found."
 }
 ```
 
@@ -189,9 +185,7 @@ Tidak mengembalikan body apapun.
 **Response Gagal (Tidak Ditemukan)** — `404 Not Found`:
 ```json
 {
-  "errors": {
-    "message": "Post not found."
-  }
+  "message": "Post not found."
 }
 ```
 

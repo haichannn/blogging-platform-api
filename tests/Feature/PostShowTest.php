@@ -53,9 +53,7 @@ class PostShowTest extends TestCase
         $response
             ->assertStatus(404)
             ->assertExactJson([
-                'errors' => [
-                    'message' => 'Post not found.',
-                ],
+                'message' => 'Post not found.',
             ]);
     }
 
@@ -73,9 +71,7 @@ class PostShowTest extends TestCase
         $response
             ->assertStatus(404)
             ->assertExactJson([
-                'errors' => [
-                    'message' => 'Post not found.',
-                ],
+                'message' => 'Post not found.',
             ]);
     }
 }
