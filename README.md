@@ -30,7 +30,6 @@ Project ini hadir sebagai fondasi backend yang solid untuk kebutuhan blogging. T
 | Bahasa            | PHP 8.3                                                |
 | Framework         | [Laravel](https://laravel.com/) 13.x                  |
 | Database          | SQLite                                                 |
-| Autentikasi       | [Laravel Sanctum](https://laravel.com/docs/sanctum)   |
 | Dokumentasi API   | [Scramble](https://scramble.dedoc.co/)                 |
 | Code Style        | [Laravel Pint](https://laravel.com/docs/pint) (PSR-12) |
 | Testing           | [PHPUnit](https://phpunit.de/) 12.x                   |
@@ -85,6 +84,7 @@ Perintah ini akan menjalankan beberapa proses sekaligus secara bersamaan:
 - **Queue Listener** — Pemroses antrian background job
 - **Pail (Log Viewer)** — Pemantau log secara real-time
 - **Vite** — Kompilasi aset frontend
+
 
 Server akan berjalan di: **`http://localhost:8000`**
 
