@@ -17,7 +17,6 @@ Project ini hadir sebagai fondasi backend yang solid untuk kebutuhan blogging. T
 - **📝 Manajemen Postingan** — Operasi lengkap CRUD (Create, Read, Update, Delete) untuk artikel blog.
 - **🔍 Pencarian Postingan** — Filter artikel berdasarkan judul atau kategori menggunakan query parameter `?search=`.
 - **📐 Standarisasi Respon** — Format JSON yang konsisten dan mudah dikonsumsi (key menggunakan camelCase).
-- **⚡ Performa Tinggi** — Dioptimalkan untuk meminimalkan beban query ke database.
 - **🔒 Keamanan** — Terlindungi dari SQL Injection dengan penggunaan Eloquent ORM dan query binding yang tepat.
 - **📖 Dokumentasi API Interaktif** — Tersedia otomatis dan selalu up-to-date menggunakan Scramble.
 
